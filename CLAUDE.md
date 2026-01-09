@@ -10,17 +10,31 @@ The goal is to provide complete, functional projects that cover core programming
 
 ## Project Structure
 
-Currently contains one reference implementation:
+Projects are organized by **project name**, with each project containing multiple language implementations:
 
-- `demo.py` — Student Information Management System (Python)
+```
+lang-end-pj/
+├── projects/
+│   ├── student-manager/        # Student Information Management System
+│   │   ├── README.md
+│   │   ├── python/
+│   │   │   └── demo.py
+│   │   ├── go/              (planned)
+│   │   └── typescript/      (planned)
+│   ├── todo-list/           (planned)
+│   └── notes-app/           (planned)
+├── README.md
+├── CLAUDE.md
+└── LICENSE
+```
 
-### Student Information Management System (`demo.py`)
+### Student Information Management System
 
-A console-based application demonstrating CRUD operations with file persistence.
+Located at `projects/student-manager/`
 
-**Architecture:**
+**Architecture (Python implementation):**
 - Single-file procedural design with function-based organization
-- Data stored as stringified dictionaries in text file (`学生信息/student.txt`)
+- Data stored as stringified dictionaries in text file
 - Main loop with menu-driven UI (`main()` → `menu()` → function dispatch)
 
 **Key functions:**
@@ -36,33 +50,55 @@ A console-based application demonstrating CRUD operations with file persistence.
 - `save()` / `save2()` — Persist records to file (legacy versions)
 
 **Data format:**
-Each line in `学生信息/student.txt` is a Python dictionary string:
+Each line in the data file is a Python dictionary string:
 ```
 {'id': '1001', 'name': '张三', 'english': 85, 'python': 90, 'java': 78}
 ```
 
 Read with `eval()` or `dict(eval(item))` to convert back to dictionary.
 
-## Running the Project
+## Running Projects
+
+Each project has its own README with specific instructions. Example:
 
 ```bash
+# Student Manager (Python)
+cd projects/student-manager/python
 python demo.py
 ```
 
-## Adding New Language Implementations
+## Adding New Implementations
 
-When adding a new language implementation:
+### Adding a new language to an existing project
 
-1. **Keep the same functionality** — All CRUD operations, sorting, backup, etc.
-2. **Follow existing project naming** — Use descriptive filenames like `student_manager.go`, `student_manager.rs`
-3. **Document language-specific patterns** — If the implementation uses idiomatic patterns specific to that language
-4. **Test core functionality** — Ensure insert, search, delete, modify, sort all work
+1. Create the language directory: `projects/<project-name>/<language>/`
+2. Implement the same functionality as the reference implementation
+3. Create a `data/` subdirectory for any data files
+4. Update the project's README with the new implementation
 
-Suggested future project types (from README.md):
-- Data management (CRUD operations)
-- Algorithm implementation (sorting, searching)
-- Utilities (file processing, text analysis)
-- Simple games (guess number, tic-tac-toe)
+### Adding a new project
+
+1. Create project directory: `projects/<project-name>/`
+2. Create a README.md describing:
+   - Project overview
+   - Key concepts covered
+   - Main features
+   - How to run each language implementation
+3. Create language subdirectories (python/, go/, typescript/, etc.)
+4. Each language implementation should maintain its data in a `data/` subdirectory
+
+**Naming conventions:**
+- Project directories: kebab-case (e.g., `todo-list`, `notes-app`)
+- Source files: Follow language conventions (snake_case for Python, PascalCase for Go, etc.)
+
+## Data Files
+
+Each language implementation stores its data in its own `data/` subdirectory:
+- `projects/student-manager/python/data/`
+- `projects/todo-list/go/data/`
+- etc.
+
+Data directories are gitignored to avoid committing user data.
 
 ## License
 

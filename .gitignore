@@ -1,0 +1,40 @@
+# 数据目录 - 各语言实现的数据文件
+projects/*/data/
+**/data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# TypeScript / Node.js
+node_modules/
+dist/
+*.tsbuildinfo
+
+# 操作系统
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
